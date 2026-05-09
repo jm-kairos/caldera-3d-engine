@@ -15,7 +15,7 @@ SET compilerFlags=-g
 REM -Wall -Werror
 SET includeFlags=-Isource -I../engine/source/
 SET linkerFlags=-L../bin/ -lengine.lib
-SET defines=-DNAX_DEBUG -DCALIMPORT
+SET defines=-DCAL_DEBUG -DCALIMPORT
 
 ECHO "Building %assembly%..."
 clang++ %cppFilenames% %compilerFlags% -o ../bin/%assembly%.exe %defines% %includeFlags% %linkerFlags% 

@@ -8,7 +8,7 @@
                 "${VULKAN_SDK}/include"
             ],
             "defines": [
-                "NAX_DEBUG",
+                "CAL_DEBUG",
                 "UNICODE",
                 "_UNICODE",
                 "CALEXPORT"
@@ -27,7 +27,7 @@
                 "${VULKAN_SDK}/include"
             ],
             "defines": [
-                "NAX_DEBUG",
+                "CAL_DEBUG",
                 "UNICODE",
                 "_UNICODE",
                 "CALEXPORT"
