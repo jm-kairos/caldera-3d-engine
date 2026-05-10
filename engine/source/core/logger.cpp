@@ -1,5 +1,6 @@
 #include "logger.h"
 #include "asserts.h"
+#include "platform/platform.h"
 
 // TODO: temporary.
 #include <stdio.h>
@@ -38,21 +39,22 @@ void logger_output(log_level level, const char* message, ...){
         "[TRACE]: "
     };
 
-    // b8 const is_error = level < 2;
+    b8 const is_error = level < LOG_LEVEL_WARN;
 
-    char out_message[32000];
+    const i32 msg_length = 32000;
+    char out_message[msg_length];
     memset(out_message, 0, sizeof(out_message));
 
     // Format message in a string.
     // TODO: compiler specific workaround, study this issue later.
     __builtin_va_list arg_ptr;
     va_start(arg_ptr, message);
-    vsnprintf(out_message, 32000, message, arg_ptr);
+    vsnprintf(out_message, msg_length, message, arg_ptr);
     va_end(arg_ptr);
 
     // Pre-apend level of the message into a separate buffer to avoid
     // overlapping source/destination undefined behavior in sprintf.
-    char final_message[32000];
+    char final_message[msg_length];
     snprintf(final_message, sizeof(final_message), "%s%s\n", level_strings[level], out_message);
 
     // Print the message.
@@ -60,4 +62,13 @@ void logger_output(log_level level, const char* message, ...){
     printf("%s", final_message);
 
     // TODO: output it to a file, later.
+
+    // Platform-specific output  
+    if (is_error)
+    {
+        platform_console_write_error(final_message, level);
+    }else{
+        platform_console_write(final_message, level);
+    }
+    
 }

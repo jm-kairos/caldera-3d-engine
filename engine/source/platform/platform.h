@@ -6,7 +6,7 @@ typedef struct platform_state{
     void* internal_state; // type of this will be determined on the particular implementation on the cpp file
 } platform_state;
 
-b8 platform_init(
+CALDERA_API b8 platform_init(
     platform_state* plat_state,
     const char* app_name,
     i32 x,
@@ -14,9 +14,9 @@ b8 platform_init(
     i32 width,
     i32 height);
 
-void platform_terminate(platform_state* plat_state);
+CALDERA_API void platform_terminate(platform_state* plat_state);
 
-b8 platform_pump_messages(platform_state* plat_state);
+CALDERA_API b8 platform_pump_messages(platform_state* plat_state);
 
 void* platform_allocate(u64 size, b8 aligned);
 void platform_free(void* block, b8 aligned);
