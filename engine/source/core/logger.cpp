@@ -59,7 +59,6 @@ void logger_output(log_level level, const char* message, ...){
 
     // Print the message.
     // TODO: this is platform specific.
-    printf("%s", final_message);
 
     // TODO: output it to a file, later.
 
