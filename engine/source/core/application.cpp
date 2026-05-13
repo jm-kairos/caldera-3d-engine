@@ -3,6 +3,7 @@
 
 #include "logger.h"
 #include "platform/platform.h"
+#include "core/cal_memory.h"
 
 // Singleton design for the state of the application struct.
 
@@ -32,7 +33,7 @@ b8 application_init(game* game_inst){
     app_state.game_inst = game_inst;
 
     // Initialize subsystems
-    logger_init();
+    logger_initialize();
 
     // TODO: remove this
     CAL_LOG_FATAL("A test message: %f", 3.14f);
@@ -75,6 +76,8 @@ b8 application_init(game* game_inst){
 }
 
 b8 application_run(){
+    
+    CAL_LOG_INFO(cal_memory_get_memory_usage_string());
 
     while (app_state.is_running){   
 

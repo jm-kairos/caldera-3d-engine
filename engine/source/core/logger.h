@@ -23,7 +23,7 @@ typedef enum log_level {
     LOG_LEVEL_TRACE = 5
 } log_level;
 
-b8 logger_init();
+b8 logger_initialize();
 void logger_terminate();
 
 CALDERA_API void logger_output(log_level level, const char* message, ...);

@@ -131,23 +131,23 @@ b8 platform_pump_messages(platform_state* plat_state){
     return TRUE;
 }
 
-void* platform_allocate(u64 size, b8 aligned){
+VOID_PTR platform_allocate(u64 size, b8 aligned){
     return malloc(size);
 }
 
-void platform_free(void* block, b8 aligned){
+void platform_free(VOID_PTR block, b8 aligned){
     return free(block);
 }
 
-void* platform_zero_memory(void* block, u64 size){
+VOID_PTR platform_zero_memory(VOID_PTR block, u64 size){
     return memset(block, 0, size);
 }
 
-void* platfor_copy_memory(void* dest, const void* source, u64 size){
+VOID_PTR platform_copy_memory(VOID_PTR dest, const VOID_PTR source, u64 size){
     return memcpy(dest, source, size);
 }
 
-void* platform_set_memory(void* dest, i32 value, u64 size){
+VOID_PTR platform_set_memory(VOID_PTR dest, i32 value, u64 size){
     return memset(dest, value, size);
 }
 

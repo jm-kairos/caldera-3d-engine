@@ -44,6 +44,7 @@ STATIC_ASSERT(sizeof(f64) == 8, "Expected 'f64' to be 8 byte.");
 
 #define TRUE 1
 #define FALSE 0
+#define VOID_PTR void*
 
 // Platform detection
 #if defined(WIN32) || defined(_WIN32) || defined(__WIN32__)
