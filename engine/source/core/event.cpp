@@ -57,7 +57,7 @@ b8 event_register(u16 code, VOID_PTR listener, PFN_on_event on_event)
     {
         if (state.registered[code].events[i].listener == listener)
         {
-            // TODO: A registered listener is attempting to resgister again.
+            // TODO: A registered listener is attempting to register again.
             return FALSE;
         }
     }
