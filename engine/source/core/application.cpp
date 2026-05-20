@@ -8,6 +8,8 @@
 #include "core/event.h"
 #include "core/input.h"
 
+#include "renderer/renderer_client.h"
+
 // Singleton design for the state of the application struct.
 
 typedef struct application_state{
@@ -75,6 +77,13 @@ b8 application_init(game* game_inst){
         return FALSE;
     }
 
+    if (!renderer_initialize(game_inst->app_config.name, &app_state.platform))
+    {
+        CAL_LOG_FATAL("Failed to initialize renderer. Aborting application.")
+        return FALSE;
+    }
+    
+
     if (!app_state.game_inst->init(app_state.game_inst))
     {
         CAL_LOG_FATAL("Game failed to initialized.");
@@ -122,6 +131,10 @@ b8 application_run(){
             //     break;
             // }
 
+            // TODO: refactor packet creation
+            RenderPacket rp = {};
+            renderer_draw_frame(&rp);
+
             input_update((real)0);
         }
         
@@ -138,6 +151,8 @@ b8 application_run(){
     arena_terminate(frame_arena);
     
     app_state.is_running = FALSE; 
+
+    renderer_terminate();
 
     platform_terminate(&app_state.platform);
 
