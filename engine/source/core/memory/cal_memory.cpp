@@ -62,7 +62,7 @@ void cal_memory_virtual_free(VOID_PTR block, u64 size){
 VOID_PTR cal_memory_allocator(u64 size, memory_tag tag)
 {
     if (tag == MEMORY_TAG_UNKNOWN)
-        CAL_LOG_WARN("cal_mem_alloc called using MEMORY_TAG_UNKOWN. Describe this allocation.")
+        ERG_LOG_WARN("cal_mem_alloc called using MEMORY_TAG_UNKOWN. Describe this allocation.")
 
     stats.total_allocated += size;
     stats.tagged_allocations[tag] += size;
@@ -76,7 +76,7 @@ VOID_PTR cal_memory_allocator(u64 size, memory_tag tag)
 
 void cal_memory_free(VOID_PTR block, u64 size, memory_tag tag){   
     if (tag == MEMORY_TAG_UNKNOWN)
-        CAL_LOG_WARN("cal_mem_free called using MEMORY_TAG_UNKOWN. Describe this allocation.")
+        ERG_LOG_WARN("cal_mem_free called using MEMORY_TAG_UNKOWN. Describe this allocation.")
 
     stats.total_allocated -= size;
     stats.tagged_allocations[tag] -= size;

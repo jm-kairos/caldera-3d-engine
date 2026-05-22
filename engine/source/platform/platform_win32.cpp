@@ -1,7 +1,7 @@
 #include "platform.h"
 
 // Windows platform layer.
-#if CAL_PLATFORM_WINDOWS
+#if ERG_PLATFORM_WINDOWS
 
 #include "core/logger.h"
 #include "core/input.h"
@@ -50,7 +50,7 @@ b8 platform_initialize(
     wc.hIcon = icon;
     wc.hCursor = LoadCursor(NULL, IDC_ARROW); // NULL; // Manage the cursos manually
     wc.hbrBackground = NULL;
-    wc.lpszClassName = "caldera_window_class";
+    wc.lpszClassName = "erg_window_class";
     
     if (!RegisterClassA(&wc))
     {
@@ -87,7 +87,7 @@ b8 platform_initialize(
     window_height += border_rect.bottom - border_rect.top; 
 
     HWND handle = CreateWindowExA(
-        window_ex_style, "caldera_window_class", app_name,
+        window_ex_style, "erg_window_class", app_name,
         window_style, window_x, window_y, window_width, window_height,
         0, 0, state->h_instance, 0);
 
@@ -95,7 +95,7 @@ b8 platform_initialize(
     {
         MessageBoxA(0, "Window creation failed !", "Error", MB_ICONEXCLAMATION | MB_OK);
 
-        CAL_LOG_FATAL("Window creation failed !");
+        ERG_LOG_FATAL("Window creation failed !");
         return FALSE;
     }else{
         state->hwnd = handle;
@@ -295,4 +295,4 @@ LRESULT CALLBACK win32_process_message(HWND hwnd, u32 msg, WPARAM w_param, LPARA
     return DefWindowProcA(hwnd, msg, w_param, l_param);
 }
 
-#endif // CAL_PLATFORM_WINDOWS
+#endif // ERG_PLATFORM_WINDOWS

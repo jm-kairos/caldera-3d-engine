@@ -15,7 +15,7 @@ SET compilerFlags=-g -shared -Wvarargs -Wall -Werror
 REM -Wall -Werror
 SET includeFlags=-Isource -I%VULKAN_SDK%/Include
 SET linkerFlags=-luser32 -lvulkan-1 -L%VULKAN_SDK%/Lib
-SET defines=-DCAL_DEBUG -DCALEXPORT -D_CRT_SECURE_NO_WARNINGS
+SET defines=-DERG_DEBUG -DERGEXPORT -D_CRT_SECURE_NO_WARNINGS
 
 ECHO "Building %assembly%..."
 clang++ %cppFilenames% %compilerFlags% -o ../bin/%assembly%.dll %defines% %includeFlags% %linkerFlags% 

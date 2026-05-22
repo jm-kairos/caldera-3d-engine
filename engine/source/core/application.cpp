@@ -34,7 +34,7 @@ b8 application_on_key(u16 code, VOID_PTR sender, VOID_PTR listener_inst, event_c
 b8 application_init(game* game_inst){
     if (initialized)
     {
-        CAL_LOG_ERROR("application_init called more than once !");
+        ERG_LOG_ERROR("application_init called more than once !");
         return FALSE;
     }
 
@@ -45,12 +45,12 @@ b8 application_init(game* game_inst){
     input_initialize();
 
     // TODO: remove this
-    CAL_LOG_FATAL("A test message: %f", 3.14f);
-    CAL_LOG_ERROR("A test message: %f", 3.14f);
-    CAL_LOG_WARN("A test message: %f", 3.14f);
-    CAL_LOG_INFO("A test message: %f", 3.14f);
-    CAL_LOG_DEBUG("A test message: %f", 3.14f);    
-    CAL_LOG_TRACE("A test message: %f", 3.14f); 
+    ERG_LOG_FATAL("A test message: %f", 3.14f);
+    ERG_LOG_ERROR("A test message: %f", 3.14f);
+    ERG_LOG_WARN("A test message: %f", 3.14f);
+    ERG_LOG_INFO("A test message: %f", 3.14f);
+    ERG_LOG_DEBUG("A test message: %f", 3.14f);    
+    ERG_LOG_TRACE("A test message: %f", 3.14f); 
 
     app_state.is_running = TRUE;
     // State the application enters in when the window is, for example, minimized.
@@ -58,7 +58,7 @@ b8 application_init(game* game_inst){
 
     if (!event_initialize())
     {
-        CAL_LOG_ERROR("event subsystem failed to initialize !");
+        ERG_LOG_ERROR("event subsystem failed to initialize !");
         return FALSE;
     }
     
@@ -73,20 +73,20 @@ b8 application_init(game* game_inst){
         game_inst->app_config.start_width, 
         game_inst->app_config.start_height)){
 
-        CAL_LOG_ERROR("platform_initialize failed !");
+        ERG_LOG_ERROR("platform_initialize failed !");
         return FALSE;
     }
 
     if (!renderer_initialize(game_inst->app_config.name, &app_state.platform))
     {
-        CAL_LOG_FATAL("Failed to initialize renderer. Aborting application.")
+        ERG_LOG_FATAL("Failed to initialize renderer. Aborting application.")
         return FALSE;
     }
     
 
     if (!app_state.game_inst->init(app_state.game_inst))
     {
-        CAL_LOG_FATAL("Game failed to initialized.");
+        ERG_LOG_FATAL("Game failed to initialized.");
         return FALSE;
     }
 
@@ -105,7 +105,7 @@ b8 application_run(){
 
     ARENA_PTR frame_arena = arena_initialize(1024 * 1024 * 64); // 64MB frame arena
     
-    CAL_LOG_INFO(cal_memory_get_memory_usage_string());
+    ERG_LOG_INFO(cal_memory_get_memory_usage_string());
 
     while (app_state.is_running){
 
@@ -119,14 +119,14 @@ b8 application_run(){
         {
             // if (!app_state.game_inst->update(app_state.game_inst, (f32)0))
             // {
-            //     CAL_LOG_FATAL("Game update failed, shutting down.");
+            //     ERG_LOG_FATAL("Game update failed, shutting down.");
             //     app_state.is_running = FALSE;
             //     break;
             // }
             // 
             // if (!app_state.game_inst->render(app_state.game_inst, (f32)0))
             // {
-            //     CAL_LOG_FATAL("Game render failed, shutting down.");
+            //     ERG_LOG_FATAL("Game render failed, shutting down.");
             //     app_state.is_running = FALSE;
             //     break;
             // }
@@ -163,7 +163,7 @@ b8 application_on_event(u16 code, VOID_PTR sender, VOID_PTR listener_inst, event
     switch (code)
     {
         case EVENT_CODE_APPLICATION_QUIT:{
-            CAL_LOG_INFO("EVENT_CODE_APPLICATION_QUIT recieved, shutting down."); 
+            ERG_LOG_INFO("EVENT_CODE_APPLICATION_QUIT recieved, shutting down."); 
             app_state.is_running = FALSE;
             return TRUE;
         }
@@ -182,19 +182,19 @@ b8 application_on_key(u16 code, VOID_PTR sender, VOID_PTR listener_inst, event_c
 
             return TRUE;
         } else if (key_code == KEY_A){
-            CAL_LOG_DEBUG("Explicit - A key pressed !");
+            ERG_LOG_DEBUG("Explicit - A key pressed !");
 
         }else{
-            CAL_LOG_DEBUG("'%c' key pressed in window. ", key_code);
+            ERG_LOG_DEBUG("'%c' key pressed in window. ", key_code);
         }
     }
     else if (code == EVENT_CODE_KEY_RELEASED){
         u16 key_code = context.data.u16[0];
         if (key_code == KEY_B)
         {
-            CAL_LOG_DEBUG("Explicit - B key released !");
+            ERG_LOG_DEBUG("Explicit - B key released !");
         }else{
-            CAL_LOG_DEBUG("'%c' key released in window. ", key_code);
+            ERG_LOG_DEBUG("'%c' key released in window. ", key_code);
         }
     }
     return FALSE;

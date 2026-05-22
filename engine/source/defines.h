@@ -48,29 +48,29 @@ STATIC_ASSERT(sizeof(f64) == 8, "Expected 'f64' to be 8 byte.");
 
 // Platform detection
 #if defined(WIN32) || defined(_WIN32) || defined(__WIN32__)
-#define CAL_PLATFORM_WINDOWS 1
+#define ERG_PLATFORM_WINDOWS 1
 #ifndef _WIN64
 #error "64-bit is required on Windows!"
 #endif
 #elif defined(__linux__) || defined(__gnu_linus__)
 // Linux OS
-#define CAL_PLATFORM_LINUX 1
+#define ERG_PLATFORM_LINUX 1
 #if defined(__ANDROID__)
-#define CAL_PLATFORM_ANDROID 1
+#define ERG_PLATFORM_ANDROID 1
 #endif
 #elif defined(__unix__)
 // Catch uncaught platform
-#define CAL_PLATFORM_POSIX 1
+#define ERG_PLATFORM_POSIX 1
 #elif __APPLE__
 // Apple platforms
-#define CAL_PLATFORM_APPLE 1
+#define ERG_PLATFORM_APPLE 1
 #include <TargetConditionals.h>
 #if TARGET_IPHONE_SIMULATOR
 // iOS Simulator
-#define CAL_PLATFORM_IOS 1
-#define CAL_PLATFORM_IOS_SIMULATOR 1
+#define ERG_PLATFORM_IOS 1
+#define ERG_PLATFORM_IOS_SIMULATOR 1
 #elif TARGET_OS_IPHONE
-#define CAL_PLATFORM_IOS 1
+#define ERG_PLATFORM_IOS 1
 // iOS devices
 #elif TARGET_OS_MAC
 // Other kinds of Mac OS
@@ -84,18 +84,18 @@ STATIC_ASSERT(sizeof(f64) == 8, "Expected 'f64' to be 8 byte.");
 
 // TODO: Explain this further.
 
-#ifdef CALEXPORT
+#ifdef ERGEXPORT
 // Exports
 #ifdef _MSC_VER
-#define CALDERA_API __declspec(dllexport)
+#define erg__api__ __declspec(dllexport)
 #else
-#define CALDERA_API __attribute__((visibility("default")))
+#define erg__api__ __attribute__((visibility("default")))
 #endif
 #else
 // Imports
 #ifdef _MSC_VER
-#define CALDERA_API __declspec(dllimport)
+#define erg__api__ __declspec(dllimport)
 #else
-#define CALDERA_API
+#define erg__api__
 #endif
 #endif

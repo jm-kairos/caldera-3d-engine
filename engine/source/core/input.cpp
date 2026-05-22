@@ -28,7 +28,7 @@ static input_state_t state;
 void input_initialize(){
     state = {};
     initialized = TRUE;
-    CAL_LOG_INFO("Input subsystem initialized.")
+    ERG_LOG_INFO("Input subsystem initialized.")
 }
 
 void input_terminate(){
@@ -79,7 +79,7 @@ void input_process_mouse_move(i16 x, i16 y){
     if (state.mouse_current.x != x || state.mouse_current.y != y)
     {
 
-        // CAL_LOG_DEBUG("Mouse pos: %i, %i", x, y);
+        // ERG_LOG_DEBUG("Mouse pos: %i, %i", x, y);
 
         state.mouse_current.x = x;
         state.mouse_current.y = y;

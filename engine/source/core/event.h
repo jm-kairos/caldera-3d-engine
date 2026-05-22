@@ -41,9 +41,9 @@ typedef b8 (*PFN_on_event)(u16 code,
 b8 event_initialize();
 void event_terminate();
 
-CALDERA_API b8 event_register(u16 code, VOID_PTR listener, PFN_on_event on_event);
-CALDERA_API b8 event_unregister(u16 code, VOID_PTR listener, PFN_on_event on_event);
-CALDERA_API b8 event_fire(u16 code, VOID_PTR listener, event_context context);
+erg__api__ b8 event_register(u16 code, VOID_PTR listener, PFN_on_event on_event);
+erg__api__ b8 event_unregister(u16 code, VOID_PTR listener, PFN_on_event on_event);
+erg__api__ b8 event_fire(u16 code, VOID_PTR listener, event_context context);
 
 // System internal event codes. Application should use codes beyond 255.
 typedef enum system_event_code {

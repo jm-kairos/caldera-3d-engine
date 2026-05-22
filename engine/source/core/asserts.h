@@ -2,9 +2,9 @@
 
 #include "defines.h"
 
-#define CAL_ASSERTIONS_ENABLED
+#define ERG_ASSERTIONS_ENABLED
 
-#ifdef CAL_ASSERTIONS_ENABLED
+#ifdef ERG_ASSERTIONS_ENABLED
 // If we are using the VS compiler
 #if _MSC_VER
 // Clang on windows does in fact support some of the MS extensions
@@ -21,9 +21,9 @@
     file: name of the code file where the assertion was raised.
     line: line within the file, where the assertion was raised.
 */
-CALDERA_API void report_assertion_failure(const char* expression, const char* message, const char* file, i32 line);
+erg__api__ void report_assertion_failure(const char* expression, const char* message, const char* file, i32 line);
 
-#define CAL_ASSERT(expr)                                            \
+#define ERG_ASSERT(expr)                                            \
     {                                                               \
         if(expr){                                                   \
                                                                     \
@@ -32,7 +32,7 @@ CALDERA_API void report_assertion_failure(const char* expression, const char* me
             debugBreak();                                           \
         }                                                           \
     }          
-#define CAL_ASSERT_MSG(expr, message)                                    \
+#define ERG_ASSERT_MSG(expr, message)                                    \
     {                                                                    \
         if(expr){                                                        \
                                                                          \
@@ -42,8 +42,8 @@ CALDERA_API void report_assertion_failure(const char* expression, const char* me
         }                                                                \
     }   
 
-#ifdef CAL_DEBUG
-#define CAL_ASSERT_DEBUG(expr)                                           \
+#ifdef ERG_DEBUG
+#define ERG_ASSERT_DEBUG(expr)                                           \
     {                                                                    \
         if(expr){                                                        \
                                                                          \
@@ -53,12 +53,12 @@ CALDERA_API void report_assertion_failure(const char* expression, const char* me
         }                                                                \
     } 
 #else
-#define CAL_ASSERT_DEBUG(expr) // Does nothing
+#define ERG_ASSERT_DEBUG(expr) // Does nothing
 #endif
 
 #else
-#define CAL_ASSERT(expr)
-#define CAL_ASSERT_MSG(expr)
-#define CAL_ASSERT_DEBUG(expr)
+#define ERG_ASSERT(expr)
+#define ERG_ASSERT_MSG(expr)
+#define ERG_ASSERT_DEBUG(expr)
 #endif
 

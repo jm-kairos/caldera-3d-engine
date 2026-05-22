@@ -24,8 +24,8 @@ struct arena_t{
 
 // Create the area.
 // This function reserves virtual memory for the arena and initializes its metadata.
-CALDERA_API ARENA_PTR arena_initialize(u64 reserve_size);
-CALDERA_API VOID_PTR arena_allocate(ARENA_PTR arena, u64 size);
+erg__api__ ARENA_PTR arena_initialize(u64 reserve_size);
+erg__api__ VOID_PTR arena_allocate(ARENA_PTR arena, u64 size);
 
-CALDERA_API void arena_reset(ARENA_PTR arena);
-CALDERA_API void arena_terminate(ARENA_PTR arena);
+erg__api__ void arena_reset(ARENA_PTR arena);
+erg__api__ void arena_terminate(ARENA_PTR arena);

@@ -18,7 +18,7 @@ b8 renderer_initialize(const char* app_name, platform_state* plat_state){
     
     if (!renderer_server->initialize(renderer_server, app_name, plat_state))
     {
-        CAL_LOG_FATAL("Renderer server failed to initialize. Shutting down.")
+        ERG_LOG_FATAL("Renderer server failed to initialize. Shutting down.")
         return FALSE;
     }
 
@@ -51,7 +51,7 @@ b8 renderer_draw_frame(RenderPacket* rp){
         b8 result = renderer_end_frame(rp->dt);
         if (!result)
         {
-            CAL_LOG_ERROR("renderer_end_frame failed. Application shutting down...")
+            ERG_LOG_ERROR("renderer_end_frame failed. Application shutting down...")
             return FALSE;
         }
         

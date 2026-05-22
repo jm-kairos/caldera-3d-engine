@@ -8,7 +8,7 @@
 b8 game_create(game* out_game){
 
     // Application configuration
-    out_game->app_config.name = "Caldera Engine Sandbox";
+    out_game->app_config.name = "Erg Engine Sandbox";
     out_game->app_config.start_pos_x = 100;
     out_game->app_config.start_pos_y = 100;
     out_game->app_config.start_width = 1280;

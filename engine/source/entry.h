@@ -20,25 +20,25 @@ int main(void){
     game game_inst;
     if (!game_create(&game_inst))
     {
-        CAL_LOG_FATAL("Could not create game !");
+        ERG_LOG_FATAL("Could not create game !");
         return -1;
     }
     
     if (!game_inst.init || !game_inst.update || !game_inst.render || !game_inst.on_resize)
     {
-        CAL_LOG_FATAL("The game's function pointers must be assigned !");
+        ERG_LOG_FATAL("The game's function pointers must be assigned !");
         return -2;
     }
 
     // Initialization.
     if(!application_init(&game_inst)){
-        CAL_LOG_INFO("Application failed to create !")
+        ERG_LOG_INFO("Application failed to create !")
         return 1;
     };
 
     // Begin the game loop.
     if(!application_run()){
-        CAL_LOG_INFO("Application did not terminate correctly !")
+        ERG_LOG_INFO("Application did not terminate correctly !")
         return 2; 
     }
 

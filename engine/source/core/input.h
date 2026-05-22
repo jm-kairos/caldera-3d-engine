@@ -149,18 +149,18 @@ void input_terminate();
 void input_update(real dt);
 
 // Keyboard input.
-CALDERA_API b8 input_is_key_down(keys key);
-CALDERA_API b8 input_is_key_up(keys key);
-CALDERA_API b8 input_was_key_down(keys key);
-CALDERA_API b8 input_was_key_up(keys key);
+erg__api__ b8 input_is_key_down(keys key);
+erg__api__ b8 input_is_key_up(keys key);
+erg__api__ b8 input_was_key_down(keys key);
+erg__api__ b8 input_was_key_up(keys key);
 
 // Mouse input
-CALDERA_API b8 input_is_button_down(buttons button);
-CALDERA_API b8 input_is_button_up(buttons button);
-CALDERA_API b8 input_was_button_down(buttons button);
-CALDERA_API b8 input_was_button_up(buttons button);
-CALDERA_API void input_get_mouse_position(i32* x, i32* y);
-CALDERA_API void input_get_previous_mouse_position(i32* x, i32* y);
+erg__api__ b8 input_is_button_down(buttons button);
+erg__api__ b8 input_is_button_up(buttons button);
+erg__api__ b8 input_was_button_down(buttons button);
+erg__api__ b8 input_was_button_up(buttons button);
+erg__api__ void input_get_mouse_position(i32* x, i32* y);
+erg__api__ void input_get_previous_mouse_position(i32* x, i32* y);
 
 void input_process_key(keys key, b8 pressed);
 void input_process_button(buttons button, b8 pressed);

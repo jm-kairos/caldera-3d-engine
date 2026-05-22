@@ -10,7 +10,7 @@ ARENA_PTR arena_initialize(u64 reserve_size)
     ARENA_PTR out_arena = (ARENA_PTR)cal_memory_allocator(sizeof(arena_t), MEMORY_TAG_ARENA);
     if (!out_arena)
     {
-        CAL_LOG_ERROR("Failed to allocate memory for arena !");
+        ERG_LOG_ERROR("Failed to allocate memory for arena !");
         return 0;
     } 
 
@@ -20,7 +20,7 @@ ARENA_PTR arena_initialize(u64 reserve_size)
     VOID_PTR block = cal_memory_allocator_virtual_memory_reserve(reserve_size);
     if (!block)
     {
-        CAL_LOG_ERROR("Failed to reserve virtual memory for arena !");
+        ERG_LOG_ERROR("Failed to reserve virtual memory for arena !");
         cal_memory_free(out_arena, sizeof(arena_t), MEMORY_TAG_ARENA);
         return 0;
     }
@@ -38,7 +38,7 @@ VOID_PTR arena_allocate(ARENA_PTR arena, u64 size)
 {
     if(!arena || size == 0)
     {
-        CAL_LOG_ERROR("Invalid arena or size for allocation !");
+        ERG_LOG_ERROR("Invalid arena or size for allocation !");
         return 0;
     }
 
@@ -46,7 +46,7 @@ VOID_PTR arena_allocate(ARENA_PTR arena, u64 size)
 
     if (new_offset > arena->reserved_size)
     {
-        CAL_LOG_ERROR("Arena out of reserved space !");
+        ERG_LOG_ERROR("Arena out of reserved space !");
         return 0;
     }
 
@@ -63,7 +63,7 @@ VOID_PTR arena_allocate(ARENA_PTR arena, u64 size)
 
         if (!cal_memory_allocator_virtual_memory_commit(commit_start_adress, size_to_commit))
         {
-            CAL_LOG_ERROR("Unable to commit memory !");
+            ERG_LOG_ERROR("Unable to commit memory !");
             return 0;
         }
 

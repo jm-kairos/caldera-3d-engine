@@ -27,20 +27,20 @@ typedef enum memory_tag{
 } memory_tag;
 
 // TODO: these shall not be exported !
-CALDERA_API void cal_memory_initialize();
-CALDERA_API void cal_memory_terminate();
+erg__api__ void cal_memory_initialize();
+erg__api__ void cal_memory_terminate();
 
-CALDERA_API VOID_PTR cal_memory_allocator_virtual_memory_commit(VOID_PTR block, u64 commit_size);
-CALDERA_API VOID_PTR cal_memory_allocator_virtual_memory_reserve(u64 reserve_size);
-CALDERA_API void cal_memory_virtual_free(VOID_PTR block, u64 size);
+erg__api__ VOID_PTR cal_memory_allocator_virtual_memory_commit(VOID_PTR block, u64 commit_size);
+erg__api__ VOID_PTR cal_memory_allocator_virtual_memory_reserve(u64 reserve_size);
+erg__api__ void cal_memory_virtual_free(VOID_PTR block, u64 size);
 
-CALDERA_API VOID_PTR cal_memory_allocator(u64 size, memory_tag tag);
-CALDERA_API void cal_memory_free(VOID_PTR block, u64 size, memory_tag tag);
+erg__api__ VOID_PTR cal_memory_allocator(u64 size, memory_tag tag);
+erg__api__ void cal_memory_free(VOID_PTR block, u64 size, memory_tag tag);
 
-CALDERA_API VOID_PTR cal_memory_zero(VOID_PTR block, u64 size);
-CALDERA_API VOID_PTR cal_memory_copy(VOID_PTR dest, const VOID_PTR source, u64 size);
-CALDERA_API VOID_PTR cal_memory_set(VOID_PTR dest, i32 value, u64 size);
+erg__api__ VOID_PTR cal_memory_zero(VOID_PTR block, u64 size);
+erg__api__ VOID_PTR cal_memory_copy(VOID_PTR dest, const VOID_PTR source, u64 size);
+erg__api__ VOID_PTR cal_memory_set(VOID_PTR dest, i32 value, u64 size);
 
 // Debug function. Prints usage statistics to the console.
-CALDERA_API char* cal_memory_get_memory_usage_string();
+erg__api__ char* cal_memory_get_memory_usage_string();
 

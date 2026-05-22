@@ -9,4 +9,4 @@ struct VulkanContext{
     VkAllocationCallbacks* allocator;
 };
 
-#define CAL_VULKAN_EVALUATE_ERROR(_result) if(result != VK_SUCCESS) { CAL_LOG_ERROR("vkCreateInstance failed with result: %u", result); return FALSE; } 
+#define ERG_VULKAN_EVALUATE_ERROR(_result) if(result != VK_SUCCESS) { ERG_LOG_ERROR("vkCreateInstance failed with result: %u", result); return FALSE; } 
