@@ -106,19 +106,18 @@ b8 vulkan_renderer_server_initialize(RendererServer *renderer_server, const char
     // TODO: Implement a Vulkan Debugger.
 
 #endif
-    
-    // Device creation
-    if(!vulkan_device_create(&context)){
-        IBX_LOG_ERROR("Failed to create VkDevice.")
-        return FALSE;
-    }
 
     if (!vulkan_platform_create_surface(plat_stat, &context))
     {
         IBX_LOG_ERROR("Failed to create VkSurface")
         return FALSE; 
     }
-
+    
+    // Device creation
+    if(!vulkan_device_create(&context)){
+        IBX_LOG_ERROR("Failed to create VkDevice.")
+        return FALSE;
+    }
     
     IBX_LOG_INFO("Vulkan renderer initialized successfully.")
     return TRUE;
