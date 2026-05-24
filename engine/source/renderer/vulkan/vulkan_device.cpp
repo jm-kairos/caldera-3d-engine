@@ -156,7 +156,6 @@ void vulkan_device_release(VulkanContext* context){
     vkDestroyDevice(context->device.logical_device, context->allocator);
 }
 
-
 b8 vulkan_check_physical_device_suitability(
     VkPhysicalDevice device,
     VkSurfaceKHR surface,
